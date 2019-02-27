@@ -26,12 +26,12 @@ $("#linkPromocao").on('change', function() {
 			statusCode: {
 				404: function() {
 					$("#alert").addClass("alert alert-danger").text("Nenhuma informação pode ser recuperada dessa url.");
-					$("#linkImagem").attr("src", "/images/promo-dark.png");
+					$("#linkImagem").attr("src", "/images/image.jpeg");
 				}
 			},
 			error: function() {
 				$("#alert").addClass("alert alert-danger").text("Ops... algo deu errado, tente mais tarde.");
-				$("#linkImagem").attr("src", "/images/promo-dark.png");
+				$("#linkImagem").attr("src", "/images/image.jpeg");
 			},
 			complete: function() {
 				$("#loader-img").removeClass("loader");
