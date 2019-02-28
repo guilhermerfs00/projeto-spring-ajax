@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="Promocoes")
+@Table(name="promocoes")
 public class Promocoes implements Serializable{
 	private static final long serialVersionUID = 4385055542014926011L;
 

@@ -1,5 +1,6 @@
 package com.projeto.demoprojeto.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,17 +12,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Categoria")
-public class Categoria {
-	
+@Table(name="categorias")
+public class Categoria implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable=false, name="titulo")
+	@Column(nullable=false, name="titulo", unique = true)
 	private String titulo;
 	
-	@OneToMany(mappedBy = "Promocoes")
+	@OneToMany(mappedBy = "categoria")
 	private List<Promocoes> promocoes;
 
 	public Long getId() {
