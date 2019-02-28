@@ -39,3 +39,37 @@ $("#linkPromocao").on('change', function() {
 		});
 	}
 });
+
+$("form-add-promo").submit(function(evt) {
+	
+	evt.preventDefault();
+	
+	var promo = {};
+	
+	promo.linkpromocao = $("#linkPromocao").val;
+	promo.descricao = $("#descricao").val;
+	promo.preco = $("preco").val;
+	promo.titulo = $("#titulo").val;
+	promo.categoria = $("#categoria").val;
+	promo.linkImage = $("#linkImage").attr("src");
+	promo.site= $("#site").text();
+	
+	console.log('promo >', promo);
+	
+	$.ajax({
+		method: "POST",
+		url: "/promocao/save",
+		data: promo,
+		sucsses: function(){
+			$("#alert").addClass("alert alert-success").text("Ok, promoção salva !");
+		},
+		error: function(){
+			console.log('> error: ', xhr.responseText);
+			$("#alert").addClass("alert alert-danger").text("Não foi possível adicionar !");
+			
+		}
+	});
+});
+
+
+
