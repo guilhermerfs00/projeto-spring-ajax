@@ -4,49 +4,49 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name="promocoes")
-public class Promocoes implements Serializable{
-	private static final long serialVersionUID = 4385055542014926011L;
+@Table(name = "promocoes")
+public class Promocoes implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable = false, name ="title" )
-	private String title;
-	
-	@Column(nullable = false, name ="link_promocao")
-	private String link_promocao;
-	
-	@Column(nullable = false, name ="site_promocao" )
+
+	@Column(name = "titulo", nullable = false)
+	private String titulo;
+
+	@Column(name = "link_promocao", nullable = false)
+	private String linkPromocao;
+
+	@Column(name = "site_promocao", nullable = false)
 	private String site;
-	
-	@Column(name ="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
-	@Column(nullable = false, name ="preco_promocao" )
-	private BigDecimal preco_promocao;
-	
-	@Column(nullable = false, name ="dCadastro")
-	@DateTimeFormat
-	private LocalDateTime data_cadastro;
+
+	@Column(name = "link_imagem", nullable = false)
+	private String linkImagem;
+
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
+	@Column(name = "preco_promocao", nullable = false)
+	private BigDecimal preco;
+
+	@Column(name = "total_likes")
+	private int likes;
+
+	@Column(name = "data_cadastro", nullable = false)
+	private LocalDateTime dtCadastro;
 
 	@ManyToOne
-	@JoinColumn(name="categoria_fk")
+	@JoinColumn(name = "categoria_fk")
 	private Categoria categoria;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -55,28 +55,28 @@ public class Promocoes implements Serializable{
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String gettitulo() {
+		return titulo;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void settitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLink_promocao() {
-		return link_promocao;
+	public String getLinkPromocao() {
+		return linkPromocao;
 	}
 
-	public void setLink_promocao(String link_promocao) {
-		this.link_promocao = link_promocao;
+	public void setLinkPromocao(String linkPromocao) {
+		this.linkPromocao = linkPromocao;
 	}
 
-	public String getSite_promocao() {
+	public String getSite() {
 		return site;
 	}
 
-	public void setSite_promocao(String site_promocao) {
-		this.site = site_promocao;
+	public void setSite(String site) {
+		this.site = site;
 	}
 
 	public String getDescricao() {
@@ -87,20 +87,36 @@ public class Promocoes implements Serializable{
 		this.descricao = descricao;
 	}
 
-	public BigDecimal getPreco_promocao() {
-		return preco_promocao;
+	public String getLinkImagem() {
+		return linkImagem;
 	}
 
-	public void setPreco_promocao(BigDecimal preco_promocao) {
-		this.preco_promocao = preco_promocao;
+	public void setLinkImagem(String linkImagem) {
+		this.linkImagem = linkImagem;
 	}
 
-	public LocalDateTime getData_cadastro() {
-		return data_cadastro;
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-	public void setData_cadastro(LocalDateTime data_cadastro) {
-		this.data_cadastro = data_cadastro;
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
+	public LocalDateTime getDtCadastro() {
+		return dtCadastro;
+	}
+
+	public void setDtCadastro(LocalDateTime dtCadastro) {
+		this.dtCadastro = dtCadastro;
 	}
 
 	public Categoria getCategoria() {
@@ -113,11 +129,9 @@ public class Promocoes implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Promocoes [id=" + id + ", title=" + title + ", link_promocao=" + link_promocao + ", site_promocao="
-				+ site + ", descricao=" + descricao + ", preco_promocao=" + preco_promocao + ", data_cadastro="
-				+ data_cadastro + ", categoria=" + categoria + "]";
+		return "Promocoes [id=" + id + ", titulo=" + titulo + ", linkPromocao=" + linkPromocao + ", site=" + site
+				+ ", descricao=" + descricao + ", linkImagem=" + linkImagem + ", preco=" + preco + ", likes=" + likes
+				+ ", dtCadastro=" + dtCadastro + ", categoria=" + categoria + "]";
 	}
-	
-	
-	
+
 }
