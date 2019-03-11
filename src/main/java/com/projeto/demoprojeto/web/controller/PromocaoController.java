@@ -52,7 +52,12 @@ public class PromocaoController {
 		return ResponseEntity.ok().build();
 	}
 	
-
+	@GetMapping("/list")
+	public String listarOfertas(ModelMap model) {
+		Sort sort = new Sort(Sort.Direction.DESC, "dtCadastro");
+		model.addAttribute("promocoes", promocaoRepository.findAll(sort));
+		return "promo-list";
+	}
 	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias() {
