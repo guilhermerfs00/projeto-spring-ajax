@@ -35,7 +35,7 @@ function loadByScrollBar(pageNumber) {
 		},
 		success: function( response ) {
 			//console.log("resposta > ", response);
-			console.log("lista > ", response.length);
+			//console.log("lista > ", response.length);
 			
 			if (response.length > 150) {
 			
@@ -58,16 +58,16 @@ function loadByScrollBar(pageNumber) {
 }
 
 $("#autocomplete-input").autocomplete({
-	source: function(requent, response){
+	source: function(request, response) {
 		$.ajax({
 			method: "GET",
-			url: "/promcao/site",
+			url: "/promocao/site",
 			data: {
 				termo: request.term
-			}
-			success: function(result){
+			},
+			success: function(result) {
 				response(result);
-			}	
+			}
 		});
 	}
 });
