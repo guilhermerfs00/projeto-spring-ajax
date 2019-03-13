@@ -61,11 +61,11 @@ public class Promocoes implements Serializable {
 		this.id = id;
 	}
 
-	public String gettitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public void settitulo(String titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 

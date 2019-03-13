@@ -7,7 +7,7 @@ $("#form-add-promo").submit(function(evt) {
 	promo.linkPromocao = $("#linkPromocao").val();
 	promo.descricao = $("#descricao").val();
 	promo.preco = $("#preco").val();
-	promo.titulo = $("#linkTitle").val();
+	promo.titulo = $("#titulo").val();
 	promo.categoria = $("#categoria").val();
 	promo.linkImagem = $("#linkImagem").attr("src");
 	promo.site = $("#site").text();
@@ -92,7 +92,7 @@ $("#linkPromocao").on('change', function() {
 			},
 			success: function( data ) {
 				console.log(data);
-				$("#linkTitle").val(data.title);
+				$("#titulo").val(data.title);
 				$("#site").text(data.site.replace("@", ""));
 				$("#linkImagem").attr("src", data.image);
 			},
