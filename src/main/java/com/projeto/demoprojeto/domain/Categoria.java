@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="categorias")
 public class Categoria implements Serializable{
@@ -24,8 +26,9 @@ public class Categoria implements Serializable{
 	@Column(nullable=false, name="titulo", unique = true)
 	private String titulo;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "categoria")
-	private List<Promocoes> promocoes;
+	private List<Promocao> promocoes;
 
 	public Long getId() {
 		return id;
@@ -43,11 +46,11 @@ public class Categoria implements Serializable{
 		this.titulo = titulo;
 	}
 
-	public List<Promocoes> getPromocoes() {
+	public List<Promocao> getPromocoes() {
 		return promocoes;
 	}
 
-	public void setPromocoes(List<Promocoes> promocoes) {
+	public void setPromocoes(List<Promocao> promocoes) {
 		this.promocoes = promocoes;
 	}
 

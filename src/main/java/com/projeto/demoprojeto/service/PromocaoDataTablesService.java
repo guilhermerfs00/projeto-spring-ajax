@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
-import com.projeto.demoprojeto.domain.Promocoes;
+import com.projeto.demoprojeto.domain.Promocao;
 import com.projeto.demoprojeto.repository.PromocaoRepository;
 
 
@@ -37,7 +37,7 @@ public class PromocaoDataTablesService {
 		
 		Pageable pageable = PageRequest.of(current, lenght, direction, column);
 		
-		Page<Promocoes> page = queryBy(search, repository, pageable);
+		Page<Promocao> page = queryBy(search, repository, pageable);
 		
 		Map<String, Object> json = new LinkedHashMap<>();
 		json.put("draw", draw);
@@ -48,7 +48,7 @@ public class PromocaoDataTablesService {
 		return json;
 	}
 
-	private Page<Promocoes> queryBy(String search, PromocaoRepository repository, Pageable pageable) {		
+	private Page<Promocao> queryBy(String search, PromocaoRepository repository, Pageable pageable) {		
 		
 			return repository.findAll(pageable);
 		
